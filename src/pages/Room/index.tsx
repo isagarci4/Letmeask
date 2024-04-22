@@ -1,17 +1,17 @@
 import { FormEvent, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import logoImg from '../assets/images/logo.svg'
-import { Button } from '../components/Button'
-import { RoomCode } from '../components/RoomCode'
+import logoImg from '../../assets/images/logo.svg'
+import { Button } from '../../components/Button/index'
+import { RoomCode } from '../../components/RoomCode'
 
-import { useAuth } from '../hooks/useAuth'
+import { useAuth } from '../../hooks/useAuth'
 
-import '../styles/room.scss'
-import { database } from '../services/firebase'
+import { database } from '../../services/firebase'
 import { push, ref, remove, set } from 'firebase/database'
-import { Question } from '../components/Question'
-import { useRoom } from '../hooks/useRoom'
+import { Question } from '../../components/Question/index'
+import { useRoom } from '../../hooks/useRoom'
+import { PageRoom } from './styles'
 
 export function Room() {
     const { user } = useAuth()
@@ -62,7 +62,7 @@ export function Room() {
     }
 
     return (
-        <div id="page-room">
+        <PageRoom>
             <header>
                 <div className="content">
                     <img src={logoImg} alt="Letmeask" />
@@ -124,6 +124,6 @@ export function Room() {
                     })}
                 </div>
             </main>
-        </div>
+        </PageRoom>
     )
 }

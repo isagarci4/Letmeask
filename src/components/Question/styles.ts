@@ -1,5 +1,8 @@
-.question {
-    background: #fefefe;
+import styled from "styled-components";
+
+export const QuestionContainer = styled.div`
+
+    background: ${(props) => props.theme["white-details"]};
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     padding: 24px;
@@ -9,8 +12,8 @@
     }
 
     &.highlighted {
-        background: #f4f0ff;
-        border: 1px solid #835afd;
+        background: ${(props) => props.theme.white};
+        border: 1px solid ${(props) => props.theme.purple};
 
         footer .user-info span{
             color: #29292e;
@@ -19,7 +22,7 @@
 
     
     &.answered {
-        background: #dbdcdd;
+        background: ${(props) => props.theme["gray-light"]};
     }
 
     p {
@@ -44,7 +47,7 @@
 
             span { 
                 margin-left: 8px;
-                color: #737380;
+                color: ${(props) => props.theme["gray-dark"]};
                 font-size: 14px;
             }
         }
@@ -63,14 +66,14 @@
             &.like-button { 
                 display: flex;
                 align-items: flex-end;
-                color: #737380;
+                color: ${(props) => props.theme["gray-dark"]};
                 gap: 8px;
 
                 &.liked {
-                    color: #835afd;
+                    color: ${(props) => props.theme.purple};
 
                     svg path { 
-                        stroke: #835afd;
+                        stroke: ${(props) => props.theme.purple};
                     }
                 }
             }
@@ -81,4 +84,4 @@
         }
     }
 
-}
+`
