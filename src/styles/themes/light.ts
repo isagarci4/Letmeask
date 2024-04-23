@@ -1,4 +1,4 @@
-export const defaultTheme = {
+export const lightTheme = {
     black: '#29292E',
     white: '#FFF',
 

@@ -5,13 +5,13 @@ import { AuthContextProvider } from "./contexts/AuthContext";
 import { Router } from './Router';
 
 import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from './styles/themes/default';
+import { lightTheme } from './styles/themes/light';
 import { GlobalStyle } from './styles/global';
 
 
 function App() {
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={lightTheme}>
       <BrowserRouter>
         <AuthContextProvider>
           <Router />
