@@ -13,8 +13,14 @@ import { useRoom } from '../../hooks/useRoom'
 import { database } from '../../services/firebase'
 import { ref, remove, update } from 'firebase/database'
 import { PageRoom } from '../Room/styles';
+import { AdminHeader, AdminHeaderDiv, DivCode, DivLogo } from './styles';
+import { Warning } from '../../components/Warning';
+import { Moon, Sun } from '@phosphor-icons/react';
+import { useContext } from 'react';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export function AdminRoom() {
+    const { theme, toggleTheme } = useContext(ThemeContext)
     const { id } = useParams()
     const { title, questions } = useRoom(id)
 
@@ -52,15 +58,26 @@ export function AdminRoom() {
 
     return (
         <PageRoom>
-            <header>
-                <div className="content">
-                    <img src={logoImg} alt="Letmeask" />
-                   <div>
+            <AdminHeader>
+                <AdminHeaderDiv>
+                    <DivLogo>
+                        <img src={logoImg} alt="Letmeask" />
+                        {theme ? (
+                            <button onClick={toggleTheme}>
+                                <Moon size={28} />
+                            </button>
+                        ) : (                        
+                            <button onClick={toggleTheme}>
+                                <Sun size={28} />
+                            </button>
+                        )}
+                    </DivLogo>
+                   <DivCode>
                         {id && <RoomCode code={id} />}
                         <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
-                   </div>
-                </div>
-            </header>
+                   </DivCode>
+                </AdminHeaderDiv>
+            </AdminHeader>
 
             <main className="content">
                 <div className="room-title">
@@ -68,6 +85,9 @@ export function AdminRoom() {
                     {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
                 </div>
                 <div className="question-list">
+                    {questions.length === 0 && (
+                        <Warning content="Envie o código desta sala para seus amigos e comece a responder perguntas!"/>
+                    )}
                     {questions.map(question => {
                         return(
                             <Question 

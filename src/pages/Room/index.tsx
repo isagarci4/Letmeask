@@ -1,7 +1,8 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import logoImg from '../../assets/images/logo.svg'
+
 import { Button } from '../../components/Button/index'
 import { RoomCode } from '../../components/RoomCode'
 
@@ -11,9 +12,13 @@ import { database } from '../../services/firebase'
 import { push, ref, remove, set } from 'firebase/database'
 import { Question } from '../../components/Question/index'
 import { useRoom } from '../../hooks/useRoom'
-import { PageRoom } from './styles'
+import { PageRoom, RoomHeader } from './styles'
+import { ThemeContext } from '../../contexts/ThemeContext'
+import { Moon, Sun } from '@phosphor-icons/react'
+import { Warning } from '../../components/Warning'
 
 export function Room() {
+    const { theme, toggleTheme } = useContext(ThemeContext)
     const { user } = useAuth()
     const { id } = useParams()
     const [newQuestion, setNewQuestion] = useState('')
@@ -63,12 +68,23 @@ export function Room() {
 
     return (
         <PageRoom>
-            <header>
+            <RoomHeader>
                 <div className="content">
-                    <img src={logoImg} alt="Letmeask" />
+                    <div>
+                        <img src={logoImg} alt="Letmeask" />
+                        {theme ? (
+                            <button onClick={toggleTheme}>
+                                <Moon size={28} />
+                            </button>
+                        ) : (                        
+                            <button onClick={toggleTheme}>
+                                <Sun size={28} />
+                            </button>
+                        )}
+                    </div>                                                                                                  
                     {id && <RoomCode code={id} />}
                 </div>
-            </header>
+            </RoomHeader>
 
             <main className="content">
                 <div className="room-title">
@@ -97,6 +113,9 @@ export function Room() {
                 </form>
 
                 <div className="question-list">
+                    {questions.length === 0 && (
+                        <Warning content="Seja a primeira pessoa a fazer uma pergunta!" />
+                    )}                    
                     {questions.map(question => {
                         return(
                             <Question 

@@ -26,7 +26,7 @@ export const QuestionContainer = styled.div`
     }
 
     p {
-        color: #29292e;
+        color: ${(props) => props.theme.black};
     }
 
     footer {

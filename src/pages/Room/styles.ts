@@ -1,31 +1,6 @@
 import styled from "styled-components";
 
 export const PageRoom = styled.div`
-    header {
-        padding: 24px;
-        border-bottom: 1px solid ${(props) => props.theme.gray};
-
-        .content {
-            max-width: 1120px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            > img {
-                max-height: 45px;
-            }
-
-            > div {
-                display: flex;
-                gap: 16px;
-
-                button {
-                    height: 40px;
-                }
-            }
-        }
-    }
 
     main {
         max-width: 800px;
@@ -61,6 +36,7 @@ export const PageRoom = styled.div`
                 border-radius: 8px;
                 background: ${(props) => props.theme["white-details"]};
                 box-shadow: 0 2px 12px ${(props) => props.theme.shadow};
+                color: ${(props) => props.theme.black};
                 resize: vertical;
                 height: 130px;
             }
@@ -83,7 +59,7 @@ export const PageRoom = styled.div`
 
                     span { 
                         margin-left: 8px;
-                        color: #29292e;
+                        color: ${(props) => props.theme.black};
                         font-weight: 500;
                         font-size: 14px;
                     }
@@ -109,6 +85,36 @@ export const PageRoom = styled.div`
 
         .question-list {
             margin-top: 32px;
+        }
+    }
+`
+
+export const RoomHeader = styled.header`
+    padding: 24px;
+    border-bottom: 1px solid ${(props) => props.theme.gray};
+
+    .content {
+        max-width: 1120px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > div {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            
+            img {
+            max-height: 45px;
+            }
+
+            button {
+                background: transparent;
+                border: none;
+                color: ${(props) => props.theme.black};
+                cursor: pointer
+            }
         }
     }
 `
