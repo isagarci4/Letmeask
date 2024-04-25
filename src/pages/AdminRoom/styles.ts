@@ -10,6 +10,7 @@ export const AdminHeaderDiv = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
     align-items: center;
 `
 

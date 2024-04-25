@@ -5,6 +5,11 @@ export const PageAuth = styled.div`
     align-items: stretch;
     height: 100vh;
 
+    @media screen and (max-width: 786px) {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
     aside {
         flex: 7;
 

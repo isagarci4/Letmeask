@@ -30,4 +30,14 @@ export const RoomCodeButton = styled.button`
         font-weight: 500;
         color: ${(props) => props.theme.black};
     }
+
+    @media screen and (max-width: 767px) {
+        div {
+            width: 100%;
+        }
+
+        span {
+            display: none;
+        }
+    }
 `

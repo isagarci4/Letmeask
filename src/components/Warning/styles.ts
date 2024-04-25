@@ -5,6 +5,7 @@ export const WarningContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 
     img {
         margin-bottom: 8px;
